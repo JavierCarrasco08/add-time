@@ -5,6 +5,7 @@
   --primary-background-button: #7a6947;
   --primary-text-button: #fffffe;
   --primary-focus-input: #8c7851;
+  --text: 16px;
 }
 html {
   box-sizing: border-box;
@@ -25,4 +26,9 @@ body {
   box-sizing: inherit;
   padding: 0;
   margin: 0;
+}
+.root {
+  max-width: calc(var(--text) * 92px);
+  margin-right: auto;
+  margin-left: auto;
 }
