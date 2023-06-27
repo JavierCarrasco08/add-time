@@ -27,31 +27,51 @@
       <header class="hero">
         <h1 class="hero__title">Javi Time</h1>
       </header>
-      <aside>
-        <h2>Description</h2>
-        <p>
-          This page works for adding hours, minutes and seconds. Mainly created
-          to help when we have a series of videos and we want to know how long
-          it will take to watch them all, among others.
+      <aside class="description">
+        <h2 class="description__title">Description</h2>
+        <p class="description__paragraph">
+          This page works for adding hours, minutes and seconds.
+        </p>
+        <p class="description__paragraph">
+          Mainly created to help when we have a series of videos and we want to
+          know how long it will take to watch them all, among others.
         </p>
       </aside>
-      <main>
-        <div>
-          <div>
-            <input type="text" />:<input type="text" />:<input type="text" />
+      <main class="calculate">
+        <div class="calculate__sum">
+          <button class="calculate__button">+</button>
+        </div>
+        <div class="calculate__op">
+          <div class="calculate__inp">
+            <div class="calculate__groupt">
+              <input
+                type="text"
+                class="calculate__input"
+                placeholder="00" /><span>:</span
+              ><input type="text" class="calculate__input" placeholder="00" />
+              <span>:</span>
+              <input type="text" class="calculate__input" placeholder="00" />
+            </div>
+          </div>
+          <div class="calculate__oup">
+            <p class="calculate__result"></p>
           </div>
         </div>
+        <div class="calculate__add">
+          <button class="calculate__button">Add lines</button>
+        </div>
       </main>
-      <footer>
-        <p>Created &copy; by Javier Carrasco</p>
-        <nav>
-          <ul>
+      <footer class="foo">
+        <p class="foo__copy">Created &copy; by Javier Carrasco</p>
+        <nav class="foo__navigate">
+          <ul class="foo__list">
             <li>
               <a
                 href="https://github.com/JavierCarrasco08"
                 target="_blank"
                 title="Github"
                 rel="referrer noopener"
+                class="foo__a"
                 >.Github</a
               >
             </li>
@@ -61,6 +81,7 @@
                 target="_blank"
                 title="LinkedIn"
                 rel="referrer noopener"
+                class="foo__a"
                 >.LinkedIn</a
               >
             </li>
