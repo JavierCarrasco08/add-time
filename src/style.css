@@ -1,11 +1,12 @@
 :root {
   --primary-color-text-headline: #020826;
   --primary-background: #f9f4ef;
-  --primary-text-paragraph: #b8c1ec;
+  --primary-text-paragraph: #716040;
   --primary-background-button: #7a6947;
+  --primary-color-border-input: #604613;
   --primary-text-button: #fffffe;
   --primary-focus-input: #8c7851;
-  --text: 16px;
+  --height: 16px;
 }
 html {
   box-sizing: border-box;
@@ -28,7 +29,198 @@ body {
   margin: 0;
 }
 .root {
-  max-width: calc(var(--text) * 92px);
+  max-width: calc(var(--height) * 92px);
+  height: 100%;
   margin-right: auto;
   margin-left: auto;
+  display: grid;
+  grid-template-rows: calc(var(--height) * 5) calc(var(--height) * 16.5);
+  grid-template-areas:
+    "hero"
+    "description"
+    "calculate"
+    "calculate"
+    "foo";
+}
+/* Header */
+.hero {
+  grid-area: hero;
+  display: flex;
+  align-items: center;
+  padding-left: calc(var(--height) * 0.5);
+}
+.hero__title {
+  font-size: 2.2rem;
+  color: var(--primary-color-text-headline);
+  font-weight: 900;
+}
+
+/* Description */
+.description {
+  padding: calc(var(--height) * 0.5);
+  grid-area: description;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--height);
+}
+.description__title {
+  font-size: 1.7rem;
+  color: var(--primary-color-text-headline);
+}
+.description__paragraph {
+  font-size: 1.1rem;
+  color: var(--primary-text-paragraph);
+  line-height: calc(var(--height) * 1.7);
+}
+/* Calculate */
+.calculate {
+  grid-area: calculate;
+  display: grid;
+  grid-template-columns: calc(var(--height) * 2.5) 1fr calc(var(--height) * 5.5);
+}
+.calculate__add {
+  grid-column: 3/4;
+  justify-self: center;
+  align-self: center;
+}
+.calculate__sum {
+  justify-self: center;
+  align-self: center;
+}
+.calculate__op {
+  grid-column: 2/3;
+  align-self: center;
+}
+.calculate__inp {
+  border-bottom: var(--primary-focus-input) solid thin;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.calculate__oup {
+  min-height: calc(var(--height) * 0.8);
+}
+.calculate__result {
+  font-size: 1.2rem;
+  color: var(--primary-text-paragraph);
+  text-align: center;
+  font-weight: 700;
+}
+.calculate__groupt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--primary-text-paragraph);
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+.calculate__input {
+  width: calc(var(--height) * 2);
+  height: calc(var(--height) * 2);
+  border-color: var(--primary-color-border-input);
+  color: var(--primary-text-paragraph);
+  background-color: transparent;
+  border-width: 0.15rem;
+  border-style: solid;
+  outline: transparent solid thin;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+  transition: border-color 0.25s linear;
+  -webkit-transition: border-color 0.25s linear;
+  -moz-transition: border-color 0.25s linear;
+  -ms-transition: border-color 0.25s linear;
+  -o-transition: border-color 0.25s linear;
+}
+.calculate__input:focus {
+  border-color: var(--primary-focus-input);
+}
+.calculate__button {
+  font-family: inherit;
+  border: none;
+  background-color: var(--primary-background-button);
+  color: var(--primary-text-button);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: calc(var(--height) * 0.4) calc(var(--height) * 0.6);
+  border-radius: calc(var(--height) * 0.5);
+  -webkit-border-radius: calc(var(--height) * 0.5);
+  -moz-border-radius: calc(var(--height) * 0.5);
+  -ms-border-radius: calc(var(--height) * 0.5);
+  -o-border-radius: calc(var(--height) * 0.5);
+  cursor: pointer;
+}
+/* footer */
+.foo {
+  grid-area: foo;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--height) * 0.5);
+}
+.foo__copy {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-text-paragraph);
+}
+.foo__navigate {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.foo__list {
+  list-style-type: none;
+  display: flex;
+  gap: var(--height);
+}
+.foo__a {
+  color: var(--primary-text-paragraph);
+  font-weight: 900;
+}
+
+@media screen and (min-width: 360px) {
+  .hero__title {
+    font-size: clamp(2rem, 2rem + 1vw, 3rem);
+  }
+  .description__paragraph {
+    font-size: clamp(1.25rem, 1.3rem + 0.5vw, 1.7rem);
+  }
+  .description__title {
+    font-size: clamp(1.6rem, 1.7rem + 1.6vw, 2rem);
+  }
+  .calculate {
+    grid-template-columns: calc(var(--height) * 4) 1fr calc(var(--height) * 7);
+  }
+  .calculate__input {
+    font-size: clamp(1rem, 1rem + 1vw, 1.3rem);
+    width: clamp(
+      calc(var(--height) * 2),
+      calc(var(--height) * 2) + 1vw,
+      calc(var(--height) * 3.5)
+    );
+    height: clamp(
+      calc(var(--height) * 2),
+      calc(var(--height) * 2) + 1vw,
+      calc(var(--height) * 3.5)
+    );
+  }
+  .calculate__result {
+    font-size: clamp(1.2rem, 1.2rem + 1vw, 1.5rem);
+  }
+  .calculate__button {
+    padding: calc(var(--height) * 0.5) calc(var(--height) * 0.8);
+    font-size: clamp(1rem, 1rem + 0.1vw, 1.3rem);
+  }
+  .foo__copy {
+    font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
+  }
+  .foo__a {
+    font-size: clamp(1rem, 0.9rem + 1vw, 1.3rem);
+  }
 }
