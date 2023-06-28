@@ -1,8 +1,40 @@
 const $buttonSum = document.querySelector(".sum") as HTMLButtonElement;
+const $buttonAddGroupInputs = document.querySelector(
+  ".add"
+) as HTMLButtonElement;
+const $calculateOpInputs = document.querySelector(".calculate__inp");
 const $paragraphResult = document.querySelector(
   ".calculate__result"
 ) as HTMLParagraphElement;
-
+$buttonAddGroupInputs.addEventListener("pointerdown", () => {
+  if ($calculateOpInputs) {
+    const $div: HTMLDivElement = document.createElement("div");
+    $div.classList.add("calculate__groups");
+    $div.innerHTML += `<input
+                type="text"
+                class="calculate__input hour"
+                maxlength="2"
+                autocomplete="off"
+                placeholder="00" /><span>:</span
+              ><input
+                type="text"
+                class="calculate__input min"
+                placeholder="00"
+                autocomplete="off"
+                maxlength="2" />
+              <span>:</span>
+              <input
+                type="text"
+                class="calculate__input second"
+                placeholder="00"
+                autocomplete="off"
+                maxlength="2" />`;
+    if ($calculateOpInputs.children.length >= 10) {
+      return false;
+    }
+    $calculateOpInputs.append($div);
+  }
+});
 $buttonSum.addEventListener("pointerdown", () => {
   const hours: number = selector(".hour").reduce(
     (previousValue: number, currentValue: number) => {
